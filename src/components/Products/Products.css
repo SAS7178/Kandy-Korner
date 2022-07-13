@@ -1,0 +1,9 @@
+.products {
+    background-color: aqua;
+    width: 50%;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 2em;
+    font-style: oblique;
+    font-size: x-large;
+}
