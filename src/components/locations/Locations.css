@@ -2,6 +2,7 @@
 h2 {
     display: flex;
     justify-content: center;
+    font-size: xx-large;
 }
 
 .locations {
@@ -15,10 +16,10 @@ h2 {
 
 
 .location__item {
-    background-color: aqua;
+    background-color: rgb(5, 236, 236);
     margin-top: 1em;
-    border: 1px solid;
-    border-radius: 25%;
+    border: 2px solid;
+    border-radius: 35%;
     display: flex;
     justify-content: center;
     

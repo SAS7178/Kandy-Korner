@@ -13,11 +13,11 @@ export const NavBar = () => {
                 }}> Home</Link>
             </li>
             <li>
-                <Link className="navbar__link" to="/Locations">
+                <Link className="navbar__link" to="/locations">
                     Locations</Link>
             </li>
             <li>
-                <Link className="navbar__link" to="/Products">
+                <Link className="navbar__link" to="/products">
                     Products</Link>
             </li>
 

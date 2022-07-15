@@ -4,12 +4,6 @@ import "./Locations.css"
 
 export const LocationsList = () => {
     const [locations, setlocations] = useState([])
-    //     const [filteredTickets, setFiltered] = useState([])
-    //     const [emergency, setEmergency] = useState(false)
-    //     const [openOnly, updateOpenOnly] = useState(false)
-    //const navigate = useNavigate()
-
-
 
     useEffect(
         () => {
