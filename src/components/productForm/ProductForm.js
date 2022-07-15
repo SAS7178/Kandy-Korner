@@ -4,7 +4,34 @@ import "./ProductForm.css"
 
 export const ProductForm = () => {
     const [products, setProducts] = useState([])
+    const [types, setTypes] = useState([])
 
+    useEffect(
+        () => {
+            if (products) {
+                fetch(`http://localhost:8088/types`)
+                    .then(response => response.json())
+                    .then((types) => {
+                        setTypes(types)
+                    })
+            }
+        },
+        [] // When this array is empty, you are observing initial component state
+    )
+
+    const Dropdown = ({ label, options, onChange }) => {
+        return (
+          <label>
+            {label}
+            <select  onChange={(evt) => onChange(evt)}>
+                <option value={0}>Kandy Type</option>
+              {options.map((option) => (
+                <option value={option.id}>{option.name}</option>
+              ))}
+            </select>
+          </label>
+        );
+      };    
     useEffect(
         () => {
             if (products) {
@@ -39,7 +66,6 @@ export const ProductForm = () => {
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
-        console.log("You clicked the wrong button!")
         //     // TODO: Create the object to be saved to the API
         const productToSendToApi = {
 
@@ -60,14 +86,16 @@ export const ProductForm = () => {
             .then(() => {
                 navigate("/products")
             })
+      
     }
     // TODO: Perform the fetch() to POST the object to the API
     return (
         <form className="productForm">
             <h2 className="productForm__title">New Product</h2>
+
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Name</label>
+                    <label htmlFor="name">Name</label>
                     <input
                         required autoFocus
                         type="text"
@@ -82,22 +110,40 @@ export const ProductForm = () => {
                         } />
                 </div>
             </fieldset>
+
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="type"></label>
-                    <input type="checkbox" 
-                        value={product}
+                    <label htmlFor="name">Name</label>
+                    <input
+                        required autoFocus
+                        typeof="number"
+                        className="form-control"
+                        placeholder="Price of Kandy"
+                        value={product.price}
                         onChange={(evt) => {
                             const copy = { ...product }
-                            copy.product = evt.target.checked
+                            copy.price = evt.target.value
                             update(copy)
                         }
                         } />
                 </div>
             </fieldset>
+
+            <fieldset>         
+            <Dropdown
+                    label="Kandy Type"
+                    options={types}
+                    onChange={ (evt) => {
+                        const copy = {...product}
+                        copy.typeId = parseInt(evt.target.value)
+                        update(copy)
+                    }}
+                    />
+            </fieldset>
+
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="btn btn-primary">
+                className="btn btn-button">
                 Submit Product
             </button>
         </form>

@@ -1,13 +1,16 @@
 import "./Products.css"
 import { useEffect, useState } from "react"
+import { Navigate, useLocation } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 export const ProductsList = () => {
     const [products, setProducts] = useState([])
     const [expensive, setExpensive] = useState(false)
     const [filteredProducts, setFiltered] = useState([])
-   
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    
     useEffect(
         () => {
             if (products) {
@@ -21,8 +24,6 @@ export const ProductsList = () => {
         },
         [] // When this array is empty, you are observing initial component state
     )
-
-  
  
     useEffect(
         () => {
@@ -38,14 +39,17 @@ export const ProductsList = () => {
 
     return <>
         <h1> Kandy Korner</h1>
-
         <>
             <div className="product__header">
                 <button className="price__button" onClick={() => { setExpensive(true) }}>Top Priced</button>
+                
+                 <button className="price__button"  onClick={() => {
+                    navigate('/product/create')
+                }}> Create Kandy</button>
+            
                 <button className="price__button" onClick={() => { setExpensive(false) }}>Show All</button>
             </div>
         </>
-
         <h2>List of Products</h2>
 
         <article className="products">
