@@ -1,9 +1,25 @@
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
 .locations {
-    background-color: aqua;
-    width: 50%;
+    width: 80%;
     display: flex;
     flex-direction: column-reverse;
     margin-left: 2em;
     font-style: oblique;
     font-size: x-large;
+}
+
+
+.location__item {
+    background-color: aqua;
+    margin-top: 1em;
+    border: 1px solid;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    
 }

@@ -1,9 +1,48 @@
+h1 {
+display: flex;
+color: black;
+justify-content: center;
+font-size: xx-large;
+}
+h2 {
+    color: black;
+}
+
 .products {
-    background-color: aqua;
-    width: 50%;
+    color: black;
+    width: auto;
     display: flex;
     flex-direction: column-reverse;
     margin-left: 2em;
     font-style: oblique;
     font-size: x-large;
+}
+.product__item {
+    background-color: rgb(158, 210, 210);
+    margin-top: 1em;
+    border: 2px solid;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.product__header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  justify-content: space-around;
+  
+}
+
+body {
+    background-color: rgb(147, 135, 123);
+}
+.price__button {
+    color: black bold;
+    display: flex;
+    border: 1px solid;
+    margin-top: 1rem;
+    width: 20%;
+    justify-content: center;
 }

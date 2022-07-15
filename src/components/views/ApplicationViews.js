@@ -1,7 +1,7 @@
 import { Outlet, Routes, Route } from "react-router-dom"
 import { LocationsList } from "../locations/Locations"
 import { ProductsList } from "../Products/Product";
-
+import { ProductForm } from "../productForm/ProductForm";
 export const ApplicationViews = () => {
 	return (
 
@@ -13,6 +13,7 @@ export const ApplicationViews = () => {
 				</>
 			}>
 			</Route>
+			
 			<Route path="products" element={<ProductsList />} />
 			<Route path="locations" element={<LocationsList />} />
 		</Routes>

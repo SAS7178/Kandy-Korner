@@ -26,14 +26,14 @@ export const LocationsList = () => {
 
     return <>
         <h1> Kandy Korner</h1>
-        <h2>List of Locations</h2>
+        <h2>Store Locations</h2>
 
         <article className="locations">
             {
                 locations.map(
                     (location) => {
                         return <section className="location" key={`location--${location.id}`} >
-                            <div>{location.address}:&nbsp;&nbsp;{location.area}</div>
+                            <div className="location__item">{location.address}:&nbsp;&nbsp;{location.area}</div>
                         </section>
                     }
                 )
