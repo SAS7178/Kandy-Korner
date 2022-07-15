@@ -85,7 +85,7 @@ export const ProductForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="type"></label>
-                    <input type="checkbox"
+                    <input type="checkbox" 
                         value={product}
                         onChange={(evt) => {
                             const copy = { ...product }

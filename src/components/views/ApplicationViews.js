@@ -10,11 +10,13 @@ export const ApplicationViews = () => {
 			<Route path="/" element={
 				<>
 					<h1> Kandy Korner</h1>
+					<Outlet />
 				</>
 			}>
 			</Route>
 			
 			<Route path="products" element={<ProductsList />} />
+			<Route path="products/create" element={<ProductForm />} />
 			<Route path="locations" element={<LocationsList />} />
 		</Routes>
 	)

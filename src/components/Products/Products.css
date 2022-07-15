@@ -18,10 +18,10 @@ h2 {
     font-size: x-large;
 }
 .product__item {
-    background-color: rgb(158, 210, 210);
+    background-color: rgb(58, 235, 58);
     margin-top: 1em;
     border: 2px solid;
-    border-radius: 20%;
+    border-radius: 35%;
     display: flex;
     justify-content: center;
     
@@ -36,9 +36,11 @@ h2 {
 }
 
 body {
-    background-color: rgb(147, 135, 123);
+    opacity: 100%;
+background-image: url(https://media.architecturaldigest.com/photos/55e76590cd709ad62e8e79ab/master/w_900,h_600,c_limit/dam-images-architecture-2015-02-candy-shops-beautiful-candy-shops-07-candylicious.jpg);
 }
 .price__button {
+    font-weight: bolder;
     color: black bold;
     display: flex;
     border: 1px solid;

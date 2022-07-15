@@ -56,7 +56,7 @@ export const ProductsList = () => {
                     (product) => {
                         return <section className="product" key={`product--${product.id}`} >
                             <div className="product__item">{product.name}
-                                &nbsp;&nbsp;${product.price} per the {product.type.name} item.
+                                &nbsp;&nbsp;(${product.price}) this Kandys' {product.type.name} item.
                             </div>
                         </section>
                     }
