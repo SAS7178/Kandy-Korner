@@ -20,7 +20,10 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/products">
                     Products</Link>
             </li>
-
+            <li>
+                <Link className="navbar__link" to="/kandys">
+                    Find Candy</Link>
+            </li>
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={() => {
                     localStorage.removeItem("kandy_user")

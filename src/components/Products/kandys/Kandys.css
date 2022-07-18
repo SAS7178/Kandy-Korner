@@ -1,0 +1,21 @@
+.kandys {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    
+}
+.find__kandy {
+    margin-bottom: 1em;
+    width: 100%;
+}
+.kandys {
+    font-size: larger ;
+    background-color: rgb(179, 165, 202);
+    border: 1px dotted rgb(234, 222, 234);
+    padding: 0.7rem;
+    border-radius: 25%;
+    border: 1rem solid darkcyan;
+    margin: 2rem; 
+}
