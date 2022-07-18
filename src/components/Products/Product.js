@@ -1,6 +1,6 @@
 import "./Products.css"
 import { useEffect, useState } from "react"
-import { Navigate, useLocation } from "react-router-dom"
+//import { Navigate, useLocation } from "react-router-dom"
 import { Link, useNavigate } from "react-router-dom"
 
 
@@ -8,7 +8,7 @@ export const ProductsList = () => {
     const [products, setProducts] = useState([])
     const [expensive, setExpensive] = useState(false)
     const [filteredProducts, setFiltered] = useState([])
-    const location = useLocation()
+    //const location = useLocation()
     const navigate = useNavigate()
     
     useEffect(
