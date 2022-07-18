@@ -18,7 +18,7 @@ export const NavBar = () => {
             </li>
             <li>
                 <Link className="navbar__link" to="/employee/form">
-                     Apply Here</Link>
+                     Form</Link>
             </li>
             <li>
                 <Link className="navbar__link" to="/products">

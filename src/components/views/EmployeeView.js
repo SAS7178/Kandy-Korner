@@ -22,25 +22,6 @@ export const ApplicationViews = () => {
 			<Route path="locations" element={<LocationsList />} />
 			<Route path="products" element={<ProductsList />} />
 			<Route path="product/create" element={<ProductForm />} />
-			
 		</Routes>
 	)
 }
-
-// import { CustomerViews } from "./CustomerView";
-// import { EmployeeViews } from "./EmployeeView";
-
-// export const ApplicationViews = () => {
-//     const localKandyUser = localStorage.getItem("kandy_user")
-//     const kandyUserObject = JSON.parse(localKandyyUser)
-    
-//    if (kandyUserObject.staff) {
-//         //return employee views
-//          return <EmployeeViews />
-//     } else {
-//         //return customer views
-//          return <CustomerViews />
-    
-//     }
-    
-// }
