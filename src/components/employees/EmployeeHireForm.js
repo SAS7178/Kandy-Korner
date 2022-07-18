@@ -4,7 +4,8 @@ import "./EmployeeForm.css"
 
 export const EmployeeHireForm = () => {
     const [employees, setEmployees] = useState([])
-    const [employeeLocations, setLocation] = useState({})
+    const [employeeLocations, setLocation] = useState([])
+    
 
     useEffect(
         () => {
@@ -18,9 +19,9 @@ export const EmployeeHireForm = () => {
         },
         [] // When this array is empty, you are observing initial component state
     )
+
     useEffect(
         () => {
-            
                 fetch(`http://localhost:8088/locations`)
                     .then(response => response.json())
                     .then((location) => {
@@ -30,6 +31,7 @@ export const EmployeeHireForm = () => {
         },
         [] // When this array is empty, you are observing initial component state
     )
+
     const Dropdown = ({ label, options, onChange }) => {
         return (
           <label>
@@ -38,7 +40,6 @@ export const EmployeeHireForm = () => {
                 <option value={0}>Store Locations</option>
               {options.map((option) => (
                 <option value={option.id}>{option.name}</option>
-             
               ))
               }
             </select>
@@ -53,10 +54,10 @@ export const EmployeeHireForm = () => {
     */
      const [employee, update] = useState({
 
-        name: "",
-        location: '',
-        startDate: '',
-        rate: "number"
+        name: "employee.name",
+        locationId: "employee.locationId",
+        startDate:" employee.startDate",
+        payRate: "employee.rate"
     })
     /*
         TODO: Use the useNavigation() hook so you can redirect
@@ -70,28 +71,45 @@ export const EmployeeHireForm = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         //     // TODO: Create the object to be saved to the API
+        
+        const userToSendToApi = {
+            name: employee.name,
+            email: employee.email,
+            isStaff: true
+        }
+        
+        
         const employeeToSendToApi = {
-
-            name: newEmployee.name,
-            Location: newEmployee?.location?.name,
-            Startdate: '',
-            rate: newEmployee?.rate
+            name: employee.name,
+            email: employee.email,
+            userId: 0,
+            locationId: employee.locationId,
+            startDate: employee.startDate,
+            payRate: employee.payRate
         }
 
 
-        return fetch(`http://localhost:8088/employees`, {
+        return fetch(`http://localhost:8088/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(employeeToSendToApi)
+            body: JSON.stringify(userToSendToApi)
         })
             .then(response => response.json())
-            .then(() => {
-                navigate("/employees")
+            .then((newUser) => { 
+                employeeToSendToApi.userId = newUser.id
+                return fetch(`http://localhost:8088/employees`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(employeeToSendToApi)
+                })
             })
-      
+            .then(() => navigate("/employees"))
     }
+
     // TODO: Perform the fetch() to POST the object to the API
     return (
         <form className="employeeForm">
@@ -107,7 +125,7 @@ export const EmployeeHireForm = () => {
                         placeholder="Your Name"
                         value={newEmployee.name}
                         onChange={(evt) => {
-                            const copy = { ...employees }
+                            const copy = { ...employee}
                             copy.name = evt.target.value
                             update(copy)
                         }
@@ -115,16 +133,36 @@ export const EmployeeHireForm = () => {
                 </div>
             </fieldset>
 
-            <fieldset>         
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">Email</label>
+                    <input
+                        required autoFocus
+                        type="text"
+                        className="form-control"
+                        placeholder="Your Name"
+                        value={newEmployee.email}
+                        onChange={(evt) => {
+                            const copy = { ...employee}
+                            copy.email = evt.target.value
+                            update(copy)
+                        }
+                        } />
+                </div>
+            </fieldset>
+
+            <fieldset>       
+                <div className="form-group">    
+                <label htmlFor="name">location</label>
             <Dropdown
-                    label="Store Location"
                     options={employeeLocations}
                     onChange={ (evt) => {
-                        const copy = {...employeeLocations.location}
-                        copy.location = evt.target.value
+                        const copy = {...employee}
+                        copy.locationId = evt.target.value
                         update(copy)
                     }}
                     />
+                    </div>
             </fieldset>
 
             <fieldset>
@@ -134,7 +172,7 @@ export const EmployeeHireForm = () => {
                         required autoFocus
                         typeof=""
                         className="form-control"
-                        placeholder="Employee Start Date"
+                        placeholder="MM/DD/YYYY"
                         value={newEmployee.startDate}
                         onChange={(evt) => {
                             const copy = { ...employee }
@@ -155,7 +193,7 @@ export const EmployeeHireForm = () => {
                         value={newEmployee.rate}
                         onChange={(evt) => {
                             const copy = { ...employee }
-                            copy.rate = evt.target.value
+                            copy.payRate = evt.target.value
                             update(copy)
                         }
                         } />
@@ -164,7 +202,7 @@ export const EmployeeHireForm = () => {
 
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="btn btn-button">
+                className="btn-button">
                 Submit Application
             </button>
         </form>
