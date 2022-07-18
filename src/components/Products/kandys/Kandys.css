@@ -19,3 +19,7 @@
     border: 1rem solid darkcyan;
     margin: 2rem; 
 }
+.search {
+    display: flex;
+    flex-wrap: wrap;
+}
