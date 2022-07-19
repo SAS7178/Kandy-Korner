@@ -5,7 +5,7 @@ import "./EmployeeForm.css"
 export const EmployeeHireForm = () => {
     const [employees, setEmployees] = useState([])
     const [employeeLocations, setLocation] = useState([])
-    
+
 
     useEffect(
         () => {
@@ -22,41 +22,41 @@ export const EmployeeHireForm = () => {
 
     useEffect(
         () => {
-                fetch(`http://localhost:8088/locations`)
-                    .then(response => response.json())
-                    .then((location) => {
-                        setLocation(location)
-                    })
-            
+            fetch(`http://localhost:8088/locations`)
+                .then(response => response.json())
+                .then((location) => {
+                    setLocation(location)
+                })
+
         },
         [] // When this array is empty, you are observing initial component state
     )
 
     const Dropdown = ({ label, options, onChange }) => {
         return (
-          <label>
-            {label}
-            <select  onChange={(evt) => onChange(evt)} >
-                <option value={0}>Store Locations</option>
-              {options.map((option) => (
-                <option value={option.id}>{option.name}</option>
-              ))
-              }
-            </select>
-          </label>
+            <label>
+                {label}
+                <select onChange={(evt) => onChange(evt)} >
+                    <option value={0}>Store Locations</option>
+                    {options.map((option) => (
+                        <option value={option.id} key={option.id}>{option.name} </option>
+                    ))
+                    }
+                </select>
+            </label>
         );
-      };    
+    };
 
 
     /*
         TODO: Add the correct default properties to the
         initial state object
     */
-     const [employee, update] = useState({
+    const [employee, update] = useState({
 
         name: "employee.name",
         locationId: "employee.locationId",
-        startDate:" employee.startDate",
+        startDate: " employee.startDate",
         payRate: "employee.rate"
     })
     /*
@@ -71,14 +71,14 @@ export const EmployeeHireForm = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         //     // TODO: Create the object to be saved to the API
-        
+
         const userToSendToApi = {
             name: employee.name,
             email: employee.email,
             isStaff: true
         }
-        
-        
+
+
         const employeeToSendToApi = {
             name: employee.name,
             email: employee.email,
@@ -97,7 +97,7 @@ export const EmployeeHireForm = () => {
             body: JSON.stringify(userToSendToApi)
         })
             .then(response => response.json())
-            .then((newUser) => { 
+            .then((newUser) => {
                 employeeToSendToApi.userId = newUser.id
                 return fetch(`http://localhost:8088/employees`, {
                     method: "POST",
@@ -125,7 +125,7 @@ export const EmployeeHireForm = () => {
                         placeholder="Your Name"
                         value={newEmployee.name}
                         onChange={(evt) => {
-                            const copy = { ...employee}
+                            const copy = { ...employee }
                             copy.name = evt.target.value
                             update(copy)
                         }
@@ -143,7 +143,7 @@ export const EmployeeHireForm = () => {
                         placeholder="Your Name"
                         value={newEmployee.email}
                         onChange={(evt) => {
-                            const copy = { ...employee}
+                            const copy = { ...employee }
                             copy.email = evt.target.value
                             update(copy)
                         }
@@ -151,18 +151,18 @@ export const EmployeeHireForm = () => {
                 </div>
             </fieldset>
 
-            <fieldset>       
-                <div className="form-group">    
-                <label htmlFor="name">location</label>
-            <Dropdown
-                    options={employeeLocations}
-                    onChange={ (evt) => {
-                        const copy = {...employee}
-                        copy.locationId = evt.target.value
-                        update(copy)
-                    }}
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">location</label>
+                    <Dropdown
+                        options={employeeLocations}
+                        onChange={(evt) => {
+                            const copy = { ...employee }
+                            copy.locationId = evt.target.value
+                            update(copy)
+                        }}
                     />
-                    </div>
+                </div>
             </fieldset>
 
             <fieldset>
@@ -203,7 +203,7 @@ export const EmployeeHireForm = () => {
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn-button">
-                Submit Application
+                Input Employee
             </button>
         </form>
     )

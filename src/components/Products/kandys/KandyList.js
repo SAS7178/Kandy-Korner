@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { ProductsList } from "../Product"
 import "./Kandys.css"
 
 export const KandyList = ({ searchTermState }) => {
     const [kandys, setKandys] = useState([])
     const [filteredKandy, setFiltered] = useState([])
-    const navigate = useNavigate()
-
-    // const localKandyUser = localStorage.getItem("kandy_user")
-    // const kandyUserObject = JSON.parse(localKandyUser)
+  
 
     useEffect(
         () => {

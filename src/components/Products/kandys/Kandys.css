@@ -8,18 +8,19 @@
 }
 .find__kandy {
     margin-bottom: 1em;
-    width: 100%;
+    width: 55%;
 }
 .kandys {
     font-size: larger ;
-    background-color: rgb(179, 165, 202);
+    background-color:#89b0b0;
     border: 1px dotted rgb(234, 222, 234);
     padding: 0.7rem;
     border-radius: 25%;
-    border: 1rem solid darkcyan;
+    border: 1px solid darkcyan;
     margin: 2rem; 
 }
 .search {
     display: flex;
     flex-wrap: wrap;
+    
 }
