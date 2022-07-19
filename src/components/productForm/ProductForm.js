@@ -21,17 +21,17 @@ export const ProductForm = () => {
 
     const Dropdown = ({ label, options, onChange }) => {
         return (
-          <label>
-            {label}
-            <select  onChange={(evt) => onChange(evt)}>
-                <option value={0}>Kandy Type</option>
-              {options.map((option) => (
-                <option value={option.id}>{option.name}</option>
-              ))}
-            </select>
-          </label>
+            <label>
+                {label}
+                <select onChange={(evt) => onChange(evt)}>
+                    <option value={0}>Kandy Type</option>
+                    {options.map((option) => (
+                        <option value={option.id}>{option.name}</option>
+                    ))}
+                </select>
+            </label>
         );
-      };    
+    };
     useEffect(
         () => {
             if (products) {
@@ -86,7 +86,7 @@ export const ProductForm = () => {
             .then(() => {
                 navigate("/products")
             })
-      
+
     }
     // TODO: Perform the fetch() to POST the object to the API
     return (
@@ -129,16 +129,16 @@ export const ProductForm = () => {
                 </div>
             </fieldset>
 
-            <fieldset>         
-            <Dropdown
+            <fieldset>
+                <Dropdown
                     label="Kandy Type"
                     options={types}
-                    onChange={ (evt) => {
-                        const copy = {...product}
+                    onChange={(evt) => {
+                        const copy = { ...product }
                         copy.typeId = parseInt(evt.target.value)
                         update(copy)
                     }}
-                    />
+                />
             </fieldset>
 
             <button

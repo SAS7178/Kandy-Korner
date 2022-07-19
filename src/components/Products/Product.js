@@ -1,7 +1,6 @@
 import "./Products.css"
 import { useEffect, useState } from "react"
-//import { Navigate, useLocation } from "react-router-dom"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 export const ProductsList = () => {
@@ -10,7 +9,7 @@ export const ProductsList = () => {
     const [filteredProducts, setFiltered] = useState([])
     //const location = useLocation()
     const navigate = useNavigate()
-    
+
     useEffect(
         () => {
             if (products) {
@@ -24,7 +23,7 @@ export const ProductsList = () => {
         },
         [] // When this array is empty, you are observing initial component state
     )
- 
+
     useEffect(
         () => {
             if (expensive) {
@@ -42,11 +41,11 @@ export const ProductsList = () => {
         <>
             <div className="product__header">
                 <button className="price__button" onClick={() => { setExpensive(true) }}>Top Priced</button>
-                
-                 <button className="price__button"  onClick={() => {
+
+                <button className="price__button" onClick={() => {
                     navigate('/product/create')
                 }}> Create Kandy</button>
-            
+
                 <button className="price__button" onClick={() => { setExpensive(false) }}>Show All</button>
             </div>
         </>
@@ -55,7 +54,7 @@ export const ProductsList = () => {
         <article className="products">
 
             {
-                filteredProducts.map( 
+                filteredProducts.map(
 
                     (product) => {
                         return <section className="product" key={`product--${product.id}`} >

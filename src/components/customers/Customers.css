@@ -1,18 +1,20 @@
-.employeeForm__title {
+.customerForm__title {
     font-kerning: auto;
 }
 
-.employeeForm {
+.customerForm {
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bolder;
     font-size: larger;
 }
-.employee__List {
+.customer__List {
     display: flex;
+    font-weight: bolder;
     justify-content: center;
+    justify-content: space-around;
     border-radius: 25%;
+    margin: 1em;
     border: 1px solid;
     background-color: #89b0b0;
-
 }
