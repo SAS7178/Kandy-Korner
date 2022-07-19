@@ -4,6 +4,7 @@ import { ProductsList } from "../Products/Product";
 import { ProductForm } from "../productForm/ProductForm";
 import { KandyContainer } from "../Products/kandys/KandyContainer";
 import { EmployeeHireForm } from "../employees/EmployeeHireForm";
+import { EmployeeList } from "../employees/EmployeeList";
 
 export const ApplicationViews = () => {
 	return (
@@ -19,6 +20,7 @@ export const ApplicationViews = () => {
 			</Route>
             <Route path="kandys" element={<KandyContainer />} />
 			<Route path="employee/form" element={<EmployeeHireForm />} />
+			<Route path="employee" element={<EmployeeList />} />
 			<Route path="locations" element={<LocationsList />} />
 			<Route path="products" element={<ProductsList />} />
 			<Route path="product/create" element={<ProductForm />} />

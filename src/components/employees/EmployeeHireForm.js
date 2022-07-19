@@ -36,7 +36,7 @@ export const EmployeeHireForm = () => {
         return (
           <label>
             {label}
-            <select  onChange={(evt) => onChange(evt)}>
+            <select  onChange={(evt) => onChange(evt)} >
                 <option value={0}>Store Locations</option>
               {options.map((option) => (
                 <option value={option.id}>{option.name}</option>
@@ -107,7 +107,7 @@ export const EmployeeHireForm = () => {
                     body: JSON.stringify(employeeToSendToApi)
                 })
             })
-            .then(() => navigate("/employees"))
+            .then(() => navigate("/employee"))
     }
 
     // TODO: Perform the fetch() to POST the object to the API
